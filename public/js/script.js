@@ -71,11 +71,19 @@ for (let i=0; i<navLinks.length; i++){
 const mail = function(){
    const feed   = document.getElementById('feed');
    const defaultText = feed.innerText;
-   const mail = contact.getElementsByClassName('mail')[0];
+   feed.addEventListener('animationend', function(){
+      feed.classList.remove('flicker');
+   })
 
    return obj = {
       inMotion: false,
       send(){
+         if (!validateEmail(email.value)) {
+            feed.innerText = 'Invalid Email'
+            feed.classList.add('flicker');
+            return;
+         }
+
          this.inMotion = true;
          contact.classList.add("sent");
 
@@ -96,7 +104,6 @@ const mail = function(){
          this.inMotion = false;
          contact.classList.remove('sent'); // reset the contact mail animation
          feed.innerText = defaultText;
-         feed.classList.remove('flicker');
       }
    }
 }();
@@ -330,5 +337,10 @@ function toTop() {
    document.body.scrollTop = 0; // For Safari
    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
  }
+
+ function validateEmail(email) {
+   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   return re.test(String(email).toLowerCase());
+}
 
 })();
