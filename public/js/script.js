@@ -83,6 +83,7 @@ const mail = function(){
          xhttp.onreadystatechange = function() {
             // console.log(`state: ${this.readyState} status: ${this.status}`);
             if (this.readyState == 4 && this.status == 200) {
+               console.log(this.responseText);
                feed.innerText = 'The message has been sent. Thank you.'
                feed.classList.add('flicker');
             }
@@ -312,7 +313,6 @@ document.addEventListener('click', function(e){
    if (t.nodeName === 'HEADER' || t.className === 'nav-link') {
       closeMenu();
    }
-   console.log(e);
 })
 
 burger.addEventListener('click', function(e){

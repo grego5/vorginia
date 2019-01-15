@@ -49,7 +49,7 @@ app.post('/message', function(req, res){
 	smtpTransport.sendMail(mailOptions, function(err){
 		(err) ?  res.status(500).send(err) : res.status(200).send('ok');
 	});
-
+	res.status(200).send(`new message from ${sender}: ${message}`);
 	
 });
 app.get('*', function(req, res){
