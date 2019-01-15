@@ -1,17 +1,69 @@
 <% include parts/header %>
-<section id="home">
-	<div class="main-bg"></div>
-	<header>
+	<header class="collapse modal-hide">
 		<h1><%=title%></h1>
+		<div id="burger">
+			<span class="line"></span>
+			<span class="line"></span>
+			<span class="line"></span>
+		</div>
 		<nav>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Photography</a></li>
-				<li><a href="#">Design</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a class="nav-link" href="/home">home</a></li>
+				<hr>
+				<li><a class="nav-link" href="/photography">photography</a></li>
+				<hr>
+				<li><a class="nav-link" href="/design">design</a></li>
+				<hr>
+				<li><a class="nav-link" href="/contact">contact</a></li>
 			</ul>
 		</nav>
+		<div id="social">
+			<a href="#" title="https://facebook.com" data-tooltip="facebook"><i class="fab fa-facebook-f"></i></a>
+			<a href="#" title="https://vk.com" data-tooltip="vkontakte"><i class="fab fa-vk"></i></a>
+			<a href="#" title="https://instagram.com" data-tooltip="instagram"><i class="fab fa-instagram"></i></a>
+			<a href="#" title="https://www.linkedin.com" data-tooltip="linkedin"><i class="fab fa-linkedin-in"></i></a>
+			<a href="#" title="https://tinder.com" data-tooltip="tinder"><i class="fas fa-fire-alt"></i></a>
+		</div>
 	</header>
-</section>
-	
+	<main id="home"></main>
+	<main id="photography">
+		<div class="gallery"></div>
+	</main>
+	<main id="photoshop">
+		<div class="gallery"></div>
+	</main>
+	<main id="berneseMountainDog">
+		<div class="gallery"></div>
+	</main>
+	<main id="people">
+		<div class="gallery"></div>
+	</main>
+	<main id="design">
+		<div class="gallery"></div>
+	</main>
+	<main id="contact">
+		<div class="bg"></div>
+		<div class="container">
+			<div class="caption"><h4 id="feed">Leave a message if you like puppies</h4></div>
+			<div class="mail">
+				<div class="letter">
+					<div class="half">
+						<textarea class="input" id="msg" rows="10"></textarea>
+					</div>
+					<div class="half">
+						<input type="email" id="email" class="input" placeholder="Your email" >
+						<button id="sendLetter" class="input"><p>Send</p></button>
+					</div>
+				</div>
+				<div class="envelope front"></div>
+				<div class="envelope back"></div>
+			</div>
+		</div>
+	</main>
+
+	<div id="modal" class="modal">
+		<div class="modal-nav modal-prev noselect material-icons arrow">arrow_left</div>
+		<div class="modal-content"></div>
+		<div class="modal-nav modal-next noselect material-icons arrow">arrow_right</div>
+	</div>
 <% include parts/footer %>

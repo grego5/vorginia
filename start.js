@@ -2,33 +2,58 @@ try {
 	require('dotenv').config() 
 } catch(ex) {};
 
-var 	express = require('express'),
+const express = require('express'),
 		app = express(),
-	 	faker = require('faker'),
 		bodyParser = require('body-parser'),
 		methodOverride = require('method-override'),
 		sanitizer = require('sanitizer'),
-		db = require('mongoose');
+		nodemailer	= require('nodemailer');
+		// db = require('mongoose');
 
-db.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
+const smtpTransport = nodemailer.createTransport({
+	host: 'in-v3.mailjet.com',
+	port: 587,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	}
+});
+
+// db.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.use(function(req, res, next){
-	res.locals.title = "Vorgenia";
+	res.locals = {
+		title: 'Vorgenia',
+		page: ''
+	}
 	next();
 })
 
-
 app.get('/', function(req, res){
-	res.locals.page = 'Home';
-	res.render('home');
+	res.redirect('/home');
 });
+app.post('/message', function(req, res){
+	const sender = req.body.email;
+	const message = req.body.message;
 
+	var mailOptions = {
+		to: process.env.EMAIL,
+		from: 'noreply@gregos.net',
+		subject: `New message from ${sender}`,
+		text: message
+	};
+	smtpTransport.sendMail(mailOptions, function(err){
+		(err) ?  res.status(500).send(err) : res.status(200).send('ok');
+	});
+
+	
+});
 app.get('*', function(req, res){
-	res.render('error404');
+	res.render('home');
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
