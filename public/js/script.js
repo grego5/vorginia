@@ -78,6 +78,9 @@ const mail = function(){
    return obj = {
       inMotion: false,
       send(){
+         if (email.value.length < 4) {
+            email.value = 'example@mail.com';
+         }
          if (!validateEmail(email.value)) {
             feed.innerText = 'Invalid Email'
             feed.classList.add('flicker');
@@ -283,7 +286,7 @@ function loadImages(id, gallery){
 const resizeTA = function() {
    const txta = document.getElementsByTagName('textarea')[0];
    let isWide = false;
-   txta.innerText = `Under construction. You can just click send to check the animation. It doesn't actually sending yet.`;
+   txta.placeholder = `The backend for this function is working, but disabled, so you can just click send to check the animation.`;
 
    return function(){
       let w = window.innerWidth; // viewport width
@@ -300,7 +303,7 @@ resizeTA();
 window.addEventListener("resize", resizeTA);
 
 function htmlToElement(html) {
-   var template = document.createElement('template');
+   const template = document.createElement('template');
    html = html.trim(); // Never return a text node of whitespace as the result
    template.innerHTML = html;
    return template.content.firstChild;
@@ -339,7 +342,7 @@ function toTop() {
  }
 
  function validateEmail(email) {
-   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
    return re.test(String(email).toLowerCase());
 }
 

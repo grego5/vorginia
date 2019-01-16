@@ -394,10 +394,6 @@ h4 {
    height: 100%;
  }
 
-#contact {
-   overflow: hidden;
-}
-
 #contact > .container {
    --w:320px;
    --h:186px;
@@ -406,6 +402,7 @@ h4 {
    flex-direction: column;
    justify-content: flex-start;
    align-items: center;
+   
 }
 
 #contact .caption {
