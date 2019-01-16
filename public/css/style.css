@@ -42,7 +42,6 @@ main {
    top: 0;
    bottom: 0;
    width: 100%;
-   min-height: 740px;
    display: none;
    background: transparent;
 }
@@ -397,6 +396,7 @@ h4 {
    --w:320px;
    --h:186px;
    width: 100%;
+   min-height: 740px;
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
@@ -594,7 +594,6 @@ button:hover > p{
    .collapse:hover > nav,
    .collapse:hover > #social
    { opacity: 1 }
-
 
    .gallery { margin: 0 50px 0 0 }
    .modal-content { flex-basis: 80% }
