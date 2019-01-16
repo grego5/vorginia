@@ -262,6 +262,7 @@ function loadImages(id, gallery){
             <i class="material-icons">remove_red_eye</i>
             <div class="caption"><h4>${img.text}</h4></div>
          </div>)`);
+         console.log('yes');
          const a = htmlToElement(`<a class="nav-link" href="/${id}/${img.url}"></a>`);         
          a.addEventListener('click', changeDisplay);
          container.append(a);
@@ -270,7 +271,8 @@ function loadImages(id, gallery){
          container.setAttribute('style', `--v:${img.v}; --h:${img.h}`)
          if (img.v > img.h) container.classList.add('vertical');
          thumbnail = htmlToElement(`<div class="thumbnail" style="background-image: url(${img.url});">
-         ${img.text.length ? `<div class="caption"><h4>${img.text}<h4></div>` : ``}</div>)`);
+         ${img.text.length ? `<div class="caption"><h4>${img.text}</h4></div>` : ``}</div>)`);
+         debugger;
          if (img.url2) {
             const layer = htmlToElement(`<div class="layer" style="background-image: url(${img.url2});"></div>)`);
             container.append(layer);
