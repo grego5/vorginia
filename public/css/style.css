@@ -597,7 +597,7 @@ button:hover > p{
 
    .gallery { margin: 0 50px 0 0 }
    .modal-content { flex-basis: 80% }
-   .modal-nav { display: fle }
+   .modal-nav { display: flex }
 
    .grid-layout > .gallery-img {
       grid-row: span var(--v);
