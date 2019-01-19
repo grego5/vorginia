@@ -46,11 +46,10 @@ app.post('/message', function(req, res){
 		subject: `New message from ${sender}`,
 		text: message
 	};
-	smtpTransport.sendMail(mailOptions, function(err){
-		(err) ?  res.status(500).send(err) : res.status(200).send('ok');
-	});
+	// smtpTransport.sendMail(mailOptions, function(err){
+	// 	(err) ?  res.status(500).send(err) : res.status(200).send('ok');
+	// });
 	res.status(200).send(`new message from ${sender}: ${message}`);
-	
 });
 app.get('*', function(req, res){
 	res.render('home');
